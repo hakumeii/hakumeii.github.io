@@ -7,139 +7,214 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container-md">
-	<form method="get" action="" novalidate>
-		<div class="row row-cols-2">
-          <div class="col-md-6 form-element">
-            <label for="element_1" class="form-label">Start Date</label>
-            <input class="form-control" type="date" id="element_1" name="element_1" required="">
-            <div class="invalid-feedback">Please select a date.</div>
+	<div class="container-md ">
+    <div class="container px-5 my-5">
+    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+      <div class="row g-2">
+          <div class="form-floating mb-3 col-md">
+              <input class="form-control" id="startDate" type="date" placeholder="Start Date" data-sb-validations="required" />
+              <label for="startDate">Start Date</label>
+              <div class="invalid-feedback" data-sb-feedback="startDate:required">Start Date is required.</div>
           </div>
-          <div class="col-md-6 form-element">
-            <label for="element_2" class="form-label">End Date</label>
-            <input class="form-control" type="date" id="element_2" name="element_2" required="">
-            <div class="invalid-feedback">Please select a date.</div>
+          <div class="form-floating mb-3 col-md">
+              <input class="form-control" id="endDate" type="date" placeholder="End Date" data-sb-validations="required" />
+              <label for="endDate">End Date</label>
+              <div class="invalid-feedback" data-sb-feedback="endDate:required">End Date is required.</div>
+        </div>
+        <div class="form-floating mb-3 col-md">
+            <input class="form-control" id="elapsedDays" type="number" placeholder="Elapsed Days" data-sb-validations="" value="89" disabled />
+            <label for="elapsedDays">Elapsed Days</label>
+        </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="annihilation" type="text" placeholder="Annihilation" data-sb-validations="" value="1800" />
+            <label for="annihilation">Annihilation Per Week</label>
+        </div>
+        <div class="mb-3">
+            <div class="form-check form-switch">
+                <input class="form-check-input" id="depot" type="checkbox" name="depot" />
+                <label class="form-check-label" for="depot">Depot</label>
+            </div>
+        </div>
+        <div class="row g-2" id="depotForms">
+          <div class="form-floating mb-3 col-md">
+              <input class="form-control" id="orundum" type="number" placeholder="Orundum" data-sb-validations="" value="0" />
+              <label for="orundum">Orundum</label>
           </div>
-      </div>
-  <div class="col-12 form-element">
-    <label for="element_3" class="form-label">Annihilation</label>
-    <input type="number" class="form-control" id="element_3" name="element_3" placeholder="" required="">
-    <div class="invalid-feedback">Please provide a valid number.</div>
- 
-  </div>
-  <div class="col-12 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_4" name="element_4">
-      <label class="form-check-label" for="element_4">
-        Use Depot
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-      
-    </div>
-  </div>
-  <div class="row row-cols-3">
-  <div class="col-md-4 form-element">
-    <label for="element_5" class="form-label">Originite Prime</label>
-    <input type="number" class="form-control" id="element_5" name="element_5" placeholder="">
-    <div class="invalid-feedback">Please provide a valid number.</div>
-    
-  </div>
-  <div class="col-md-4 form-element">
-    <label for="element_6" class="form-label">Orundum</label>
-    <input type="number" class="form-control" id="element_6" name="element_6" placeholder="">
-    <div class="invalid-feedback">Please provide a valid number.</div>
-    
-  </div>
-  <div class="col-md-4 form-element">
-    <label for="element_7" class="form-label">HH Ticket</label>
-    <input type="number" class="form-control" id="element_7" name="element_7" placeholder="">
-    <div class="invalid-feedback">Please provide a valid number.</div>
-  </div>
-  </div>
-  <div class="row row-cols-2">
-  <div class="col-md-6 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_8" name="element_8">
-      <label class="form-check-label" for="element_8">
-        Use Monthly Card
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-      
-    </div>
-  </div>
-  <div class="col-md-6 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_9" name="element_9">
-      <label class="form-check-label" for="element_9">
-        Use Monthly Card Originite Bonus
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-    </div>
-  </div>
+          <div class="form-floating mb-3 col-md">
+              <input class="form-control" id="op" type="number" placeholder="OP" data-sb-validations="" value="0" />
+              <label for="op">OP</label>
+          </div>
+          <div class="form-floating mb-3 col-md">
+              <input class="form-control" id="hhTicket" type="number" placeholder="HH Ticket" data-sb-validations="" value="0" />
+              <label for="hhTicket">HH Ticket</label>
+          </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label d-block">Monthly Cards</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="useMonthlyCard" type="checkbox" name="monthlyCards" data-sb-validations="" />
+                <label class="form-check-label" for="useMonthlyCard">Use Monthly Card</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="includeBonusOp" type="checkbox" name="monthlyCards" data-sb-validations="" />
+                <label class="form-check-label" for="includeBonusOp">Include Bonus OP</label>
+            </div>
+        </div>
+        <div class="form-floating mb-3">
+            <input class="form-control" id="monthlyCardsUsed" type="text" placeholder="Monthly Cards Used" data-sb-validations="" disabled/>
+            <label for="monthlyCardsUsed">Monthly Cards Used</label>
+        </div>
+        <div class="row g-2" id="wrapFill">
+          <div class="col-md" id="eventForms">
+          <div class="mb-3">
+              <!-- <div class="form-check form-switch">
+                  <input class="form-check-input" id="events" type="button" name="events" data-toggle="collapse" data-target="#eventDetail"/>
+                  <label class="form-check-label" for="events">Events</label>
+              </div> -->
+              <a class="btn btn-primary" data-toggle="collapse" href="#eventDetail" role="button" aria-expanded="false" aria-controls="eventDetail">
+                Link with href</a>
+          </div>
+          <div class="collapse" id="eventDetail">
+          <div class="mb-3">
+              <label class="form-label d-block">Marcille Events</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="25Op" type="checkbox" name="marcilleEvents" data-sb-validations="" />
+                  <label class="form-check-label" for="25Op">25 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="marcilleEvents" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="20LimitedHhTicket" type="checkbox" name="marcilleEvents" data-sb-validations="" />
+                  <label class="form-check-label" for="20LimitedHhTicket">20 Limited HH Ticket</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Siege Alter Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="28Op" type="checkbox" name="siegeAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="28Op">28 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="siegeAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Lappland Alter Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="44Op" type="checkbox" name="lapplandAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="44Op">44 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="lapplandAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="24LimitedHhTicket" type="checkbox" name="lapplandAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="24LimitedHhTicket">24 Limited HH Ticket</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Virtuosa Rerun Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="41Op" type="checkbox" name="virtuosaRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="41Op">41 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="virtuosaRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="2000Orundum" type="checkbox" name="virtuosaRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="2000Orundum">2000 Orundum</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Thorns Alter Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="28Op" type="checkbox" name="thornsAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="28Op">28 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="thornsAlterEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Degenbrecher Rerun Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="28Op" type="checkbox" name="degenbrecherRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="28Op">28 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="degenbrecherRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="2000Orundum" type="checkbox" name="degenbrecherRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="2000Orundum">2000 Orundum</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Blazter &amp; Yu Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="38Op" type="checkbox" name="blazterYuEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="38Op">38 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="blazterYuEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="24LimitedHhTicket" type="checkbox" name="blazterYuEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="24LimitedHhTicket">24 Limited HH Ticket</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Entelechia</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="18Op" type="checkbox" name="entelechia" data-sb-validations="" />
+                  <label class="form-check-label" for="18Op">18 OP</label>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label class="form-label d-block">Shu Rerun Event</label>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="39Op" type="checkbox" name="shuRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="39Op">39 OP</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="shuRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" id="2000Orundum" type="checkbox" name="shuRerunEvent" data-sb-validations="" />
+                  <label class="form-check-label" for="2000Orundum">2000 Orundum</label>
+              </div>
+          </div>
+          </div>
+        </div>
+        </div>
+        <div class="d-none" id="submitSuccessMessage">
+            <div class="text-center mb-3">
+                <div class="fw-bolder">Form submission successful!</div>
+                <p>To activate this form, sign up at</p>
+                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+            </div>
+        </div>
+        <div class="d-none" id="submitErrorMessage">
+            <div class="text-center text-danger mb-3">Error sending message!</div>
+        </div>
+        <div class="d-grid">
+            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+        </div>
+    </form>
 </div>
-  <div class="col-12 form-element">
-    <label for="element_10" class="form-label">Used Monthly Card</label>
-    <input type="text" class="form-control" id="element_10" name="element_10" placeholder="">
-    <div class="invalid-feedback">Please provide a valid text.</div>
-    
-  </div>
-  <div class="col-12 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_11" name="element_11">
-      <label class="form-check-label" for="element_11">
-        Count Events
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-      
-    </div>
-  </div>
-  <div class="row row-cols-3" id="event1">
-  <div class="col-12 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_12" name="element_12">
-      <label class="form-check-label" for="element_12">
-        Marcille Events
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-      
-    </div>
-  </div>
-  <div class="col-md-4 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_13" name="element_13">
-      <label class="form-check-label" for="element_13">
-        25 OP
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-      
-    </div>
-  </div>
-  <div class="col-md-4 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_14" name="element_14">
-      <label class="form-check-label" for="element_14">
-        3 HH
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-    </div>
-  </div>
-  <div class="col-md-4 form-element">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="element_15" name="element_15">
-      <label class="form-check-label" for="element_15">
-        20 Limited HH
-      </label>
-      <div class="invalid-feedback">Please check this checkbox to proceed.</div>
-    </div>
-  </div>
-  </div>
-  <div class="col-12 form-element">
-    <label for="element_16" class="form-label">Total Pulls</label>
-    <input type="text" class="form-control" id="element_16" name="element_16" placeholder="">
-    <div class="invalid-feedback">Please provide a valid text.</div>
-    
-  </div>
-  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> 
+  </div>		
 </form>
 
 </body>
