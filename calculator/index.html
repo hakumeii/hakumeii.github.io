@@ -1,224 +1,343 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Calculator</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container-md ">
+	<div class="container-md bg-light-subtle bg-opacity-10">
     <div class="container px-5 my-5">
-    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary p-2 mb-3">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">Hakumei</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/calculator">Calculator</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="row m-3" id="explanation"><h2>Estimated Pulls Calculator Arknights</h2><br><h4>Will calculate pulls base on natural orundum gain, depot input and event orundum gain. Using <a href="https://docs.google.com/spreadsheets/d/12nugJxtTLFafudEJ_NrFuEm2X4VHrfCRkbyzMxia63A/edit?gid=1221900186#gid=1221900186">this</a> as basic guidelines.</h4></div>
+    <form id="calculatePulls">
       <div class="row g-2">
           <div class="form-floating mb-3 col-md">
-              <input class="form-control" id="startDate" type="date" placeholder="Start Date" data-sb-validations="required" />
+              <input class="form-control" id="startDate" type="date" placeholder="Start Date" onchange="updateDate()" required/>
               <label for="startDate">Start Date</label>
-              <div class="invalid-feedback" data-sb-feedback="startDate:required">Start Date is required.</div>
           </div>
           <div class="form-floating mb-3 col-md">
-              <input class="form-control" id="endDate" type="date" placeholder="End Date" data-sb-validations="required" />
+              <input class="form-control" id="endDate" type="date" placeholder="End Date" onchange="updateDate()" required/>   
               <label for="endDate">End Date</label>
-              <div class="invalid-feedback" data-sb-feedback="endDate:required">End Date is required.</div>
         </div>
         <div class="form-floating mb-3 col-md">
-            <input class="form-control" id="elapsedDays" type="number" placeholder="Elapsed Days" data-sb-validations="" value="89" disabled />
+            <input class="form-control" id="elapsedDays" type="number" placeholder="Elapsed Days"  value="0" disabled />
             <label for="elapsedDays">Elapsed Days</label>
         </div>
         </div>
         <div class="form-floating mb-3">
-            <input class="form-control" id="annihilation" type="text" placeholder="Annihilation" data-sb-validations="" value="1800" />
-            <label for="annihilation">Annihilation Per Week</label>
+            <input class="form-control" id="annihilation" type="number" placeholder="Annihilation"  value="1800" required />
+            <label for="annihilation">Orundum From Annihilation Per Week</label>
         </div>
         <div class="mb-3">
-            <div class="form-check form-switch">
-                <input class="form-check-input" id="depot" type="checkbox" name="depot" />
-                <label class="form-check-label" for="depot">Depot</label>
-            </div>
+            <button class="btn btn-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#depotForms" aria-expanded="false" aria-controls="depotForms">Depot</button>
         </div>
-        <div class="row g-2" id="depotForms">
+        <div class="row g-2 collapse" id="depotForms">
           <div class="form-floating mb-3 col-md">
-              <input class="form-control" id="orundum" type="number" placeholder="Orundum" data-sb-validations="" value="0" />
+              <input class="form-control" id="orundum" type="number" placeholder="Orundum"  value="0" required />
               <label for="orundum">Orundum</label>
           </div>
           <div class="form-floating mb-3 col-md">
-              <input class="form-control" id="op" type="number" placeholder="OP" data-sb-validations="" value="0" />
+              <input class="form-control" id="op" type="number" placeholder="OP"  value="0" required />
               <label for="op">OP</label>
           </div>
           <div class="form-floating mb-3 col-md">
-              <input class="form-control" id="hhTicket" type="number" placeholder="HH Ticket" data-sb-validations="" value="0" />
+              <input class="form-control" id="hhTicket" type="number" placeholder="HH Ticket"  value="0" required />
               <label for="hhTicket">HH Ticket</label>
           </div>
         </div>
         <div class="mb-3">
+            <label class="form-label d-block">Mission</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="dailyMission" type="checkbox" name="daily"  value="700" checked />
+                <label class="form-check-label" for="dailyMission">Daily</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="weeklyMission" type="checkbox" name="weekly"  value="500" checked />
+                <label class="form-check-label" for="weeklyMission">Weekly</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label d-block">Certificates Store & Supplies</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="t1green" type="checkbox" name="daily"  value="1200" />
+                <label class="form-check-label" for="t1green">Tier 1 Green Certificate</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="t2green" type="checkbox" name="weekly"  value="1200" />
+                <label class="form-check-label" for="t2green">Tier 2 Green Certificate</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="supplies" type="checkbox" name="weekly"  value="600" checked />
+                <label class="form-check-label" for="supplies">Monthly Supplies</label>
+            </div>
+        </div>
+        <div class="mb-3">
             <label class="form-label d-block">Monthly Cards</label>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="useMonthlyCard" type="checkbox" name="monthlyCards" data-sb-validations="" />
+                <input class="form-check-input" id="useMonthlyCard" type="checkbox" name="monthlyCards"  value="200" onchange="updateMonthly()" />
                 <label class="form-check-label" for="useMonthlyCard">Use Monthly Card</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" id="includeBonusOp" type="checkbox" name="monthlyCards" data-sb-validations="" />
-                <label class="form-check-label" for="includeBonusOp">Include Bonus OP</label>
+                <input class="form-check-input" id="includeBonusOp" type="checkbox" name="monthlyCards"  value="1080" disabled/>
+                <label class="form-check-label" for="includeBonusOp">Include Bonus OP of Monthly Cards</label>
             </div>
         </div>
         <div class="form-floating mb-3">
-            <input class="form-control" id="monthlyCardsUsed" type="text" placeholder="Monthly Cards Used" data-sb-validations="" disabled/>
+            <input class="form-control" id="monthlyCardsUsed" type="number" placeholder="Monthly Cards Used"  value="0" disabled/>
             <label for="monthlyCardsUsed">Monthly Cards Used</label>
         </div>
         <div class="row g-2" id="wrapFill">
-          <div class="col-md" id="eventForms">
+          <div class="row" id="eventForms">
           <div class="mb-3">
-              <!-- <div class="form-check form-switch">
-                  <input class="form-check-input" id="events" type="button" name="events" data-toggle="collapse" data-target="#eventDetail"/>
-                  <label class="form-check-label" for="events">Events</label>
-              </div> -->
-              <a class="btn btn-primary" data-toggle="collapse" href="#eventDetail" role="button" aria-expanded="false" aria-controls="eventDetail">
-                Link with href</a>
-          </div>
-          <div class="collapse" id="eventDetail">
+              <button class="btn btn-info p-2 m-2" type="button" data-bs-toggle="collapse" data-bs-target="#eventDetail" aria-expanded="false" aria-controls="eventDetail">Events</button>
+          <div class="collapse row row-cols-2" id="eventDetail">
           <div class="mb-3">
               <label class="form-label d-block">Marcille Events</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="25Op" type="checkbox" name="marcilleEvents" data-sb-validations="" />
-                  <label class="form-check-label" for="25Op">25 OP</label>
+                  <input class="form-check-input" id="ope1" type="checkbox" name="event1"  value="4500"/>
+                  <label class="form-check-label" for="ope1">25 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="marcilleEvents" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe1" type="checkbox" name="event1"  value="1800" />
+                  <label class="form-check-label" for="hhe1">3 HH Ticket</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="20LimitedHhTicket" type="checkbox" name="marcilleEvents" data-sb-validations="" />
-                  <label class="form-check-label" for="20LimitedHhTicket">20 Limited HH Ticket</label>
+                  <input class="form-check-input" id="lhe1" type="checkbox" name="event1"  value="12000" />
+                  <label class="form-check-label" for="lhe1">20 Limited HH Ticket</label>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Siege Alter Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="28Op" type="checkbox" name="siegeAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="28Op">28 OP</label>
+                  <input class="form-check-input" id="ope2" type="checkbox" name="event2"  value="5040" />
+                  <label class="form-check-label" for="ope2">28 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="siegeAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe2" type="checkbox" name="event2"  value="1800" />
+                  <label class="form-check-label" for="hhe2">3 HH Ticket</label>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Lappland Alter Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="44Op" type="checkbox" name="lapplandAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="44Op">44 OP</label>
+                  <input class="form-check-input" id="ope3" type="checkbox" name="event3"  value="7920" />
+                  <label class="form-check-label" for="ope3">44 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="lapplandAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe3" type="checkbox" name="event3"  value="1800" />
+                  <label class="form-check-label" for="hhe3">3 HH Ticket</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="24LimitedHhTicket" type="checkbox" name="lapplandAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="24LimitedHhTicket">24 Limited HH Ticket</label>
+                  <input class="form-check-input" id="lhe3" type="checkbox" name="event3"  value="14400" />
+                  <label class="form-check-label" for="lhe3">24 Limited HH Ticket</label>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Virtuosa Rerun Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="41Op" type="checkbox" name="virtuosaRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="41Op">41 OP</label>
+                  <input class="form-check-input" id="ope4" type="checkbox" name="event4"  value="7380" />
+                  <label class="form-check-label" for="ope4">41 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="virtuosaRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe4" type="checkbox" name="event4"  value="1800"/>
+                  <label class="form-check-label" for="hhe4">3 HH Ticket</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="2000Orundum" type="checkbox" name="virtuosaRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="2000Orundum">2000 Orundum</label>
+                  <input class="form-check-input" id="oru4" type="checkbox" name="event4"  value="2000"/>
+                  <label class="form-check-label" for="oru4">2000 Orundum</label>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Thorns Alter Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="28Op" type="checkbox" name="thornsAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="28Op">28 OP</label>
+                  <input class="form-check-input" id="ope5" type="checkbox" name="event5"  value="5040"/>
+                  <label class="form-check-label" for="ope5">28 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="thornsAlterEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
-              </div>
+                  <input class="form-check-input" id="hhe5" type="checkbox" name="event5" value="1800" />
+                  <label class="form-check-label" for="hhe5">3 HH Ticket</label>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Degenbrecher Rerun Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="28Op" type="checkbox" name="degenbrecherRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="28Op">28 OP</label>
+                  <input class="form-check-input" id="ope6" type="checkbox" name="event6"  value="5040"/>
+                  <label class="form-check-label" for="ope6">28 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="degenbrecherRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe6" type="checkbox" name="event6"  value="1800" />
+                  <label class="form-check-label" for="hhe6">3 HH Ticket</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="2000Orundum" type="checkbox" name="degenbrecherRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="2000Orundum">2000 Orundum</label>
+                  <input class="form-check-input" id="oru6" type="checkbox" name="event6"  value="2000" />
+                  <label class="form-check-label" for="oru6">2000 Orundum</label>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Blazter &amp; Yu Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="38Op" type="checkbox" name="blazterYuEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="38Op">38 OP</label>
+                  <input class="form-check-input" id="ope7" type="checkbox" name="event7"  value="6840" />
+                  <label class="form-check-label" for="ope7">38 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="blazterYuEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe7" type="checkbox" name="event7"  value="1800" />
+                  <label class="form-check-label" for="hhe7">3 HH Ticket</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="24LimitedHhTicket" type="checkbox" name="blazterYuEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="24LimitedHhTicket">24 Limited HH Ticket</label>
+                  <input class="form-check-input" id="lhe7" type="checkbox" name="event7" value="14400" />
+                  <label class="form-check-label" for="lhe7">24 Limited HH Ticket</label>
               </div>
           </div>
           <div class="mb-3">
-              <label class="form-label d-block">Entelechia</label>
+              <label class="form-label d-block">Entelechia Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="18Op" type="checkbox" name="entelechia" data-sb-validations="" />
-                  <label class="form-check-label" for="18Op">18 OP</label>
+                  <input class="form-check-input" id="ope8" type="checkbox" name="event8"  value="3240"/>
+                  <label class="form-check-label" for="ope8">18 OP</label>
               </div>
           </div>
           <div class="mb-3">
               <label class="form-label d-block">Shu Rerun Event</label>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="39Op" type="checkbox" name="shuRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="39Op">39 OP</label>
+                  <input class="form-check-input" id="ope9" type="checkbox" name="event9"  value="7020"/>
+                  <label class="form-check-label" for="ope9">39 OP</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="3HhTicket" type="checkbox" name="shuRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="3HhTicket">3 HH Ticket</label>
+                  <input class="form-check-input" id="hhe9" type="checkbox" name="event9"  value="1800"/>
+                  <label class="form-check-label" for="hhe9">3 HH Ticket</label>
               </div>
               <div class="form-check form-check-inline">
-                  <input class="form-check-input" id="2000Orundum" type="checkbox" name="shuRerunEvent" data-sb-validations="" />
-                  <label class="form-check-label" for="2000Orundum">2000 Orundum</label>
+                  <input class="form-check-input" id="oru9" type="checkbox" name="event9"  value="2000"/>
+                  <label class="form-check-label" for="oru9">2000 Orundum</label>
               </div>
           </div>
           </div>
         </div>
         </div>
-        <div class="d-none" id="submitSuccessMessage">
-            <div class="text-center mb-3">
-                <div class="fw-bolder">Form submission successful!</div>
-                <p>To activate this form, sign up at</p>
-                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-            </div>
+        <div class="form-floating mb-3 g-2">
+            <input class="form-control" id="reserveOP" type="number" placeholder="reserve OP"  value="0" />
+            <label for="reserveOP">Reserve OP for Operator Outfit</label>
         </div>
-        <div class="d-none" id="submitErrorMessage">
-            <div class="text-center text-danger mb-3">Error sending message!</div>
-        </div>
-        <div class="d-grid">
-            <button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">Submit</button>
+        <div class="d-grid p-3">
+            <button class="btn btn-primary btn-lg" id="calculateButton" type="button" onclick="calculateIT()">Calculate</button>
         </div>
     </form>
+    <div class="result m-3" id="resultView"></div>
 </div>
-<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script> 
-  </div>		
+</div>		
 </form>
 
 </body>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+  var now = new Date();
+  var y = now.getFullYear();
+  var m = now.getMonth() + 1;
+  var d = now.getDate();
+
+  //月と日は0埋めを行う
+  m = m < 10 ? "0" + m : m;
+  d = d < 10 ? "0" + d : d;
+
+  //yyyy-mm-dd形式
+  document.querySelector("input[id=endDate]").value = y + "-" + m + "-" + d;
+  document.querySelector("input[id=startDate]").value = y + "-" + m + "-" + d;
+</script>
+<script type="text/javascript">
+  const fields = ["#ope1","#ope2","#ope3", "#ope4","#ope5","#ope6","#ope7","#ope8","#ope9","#hhe1","#hhe2","#hhe3", "#hhe4","#hhe5","#hhe6","#hhe7","#hhe8","#hhe9","#lhe1","#lhe2","#lhe3", "#lhe4","#lhe5","#lhe6","#lhe7","#lhe8","#lhe9","#oru1","o#ru2","#oru3", "#oru4","#oru5","#oru6","#oru7","#oru8","#oru9"];
+  const mission = ["#dailyMission","#weeklyMission"];
+  const certStore = ["#t1green","#t2green","#supplies"];
+  const monthlyNum = ["#useMonthlyCard", "#includeBonusOp"];
+  let fieldsValue = [];
+  let totalOrundum = 0;
+  function updateDate() {
+    var start = new Date(document.getElementById("startDate").value);
+    var end = new Date(document.getElementById("endDate").value);
+    var timeDiff = end.getTime() - start.getTime();
+    let daysDiff = 0;
+    if (timeDiff<0) {
+      document.querySelector("input[id=elapsedDays]").value = 0;
+      return 0;
+    }
+    daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    document.querySelector("input[id=elapsedDays]").value = daysDiff;
+  }
+  function updateMonthly() {
+      if ($('#useMonthlyCard').is(":checked")) {
+        let days = parseInt($('#elapsedDays').val());
+        document.querySelector("input[id=monthlyCardsUsed]").value = Math.ceil(days/30);
+        $("#includeBonusOp").prop('disabled', false);
+      }
+      else {
+        document.querySelector("input[id=monthlyCardsUsed]").value = 0;
+        $("#includeBonusOp").prop('disabled', true);
+        $("#includeBonusOp").prop('checked', false);
+      }
+
+  }
+  function calculateIT() {
+    updateDate();
+    totalOrundum = 0;
+    let daysF = parseInt($("#elapsedDays").val())
+    //annihilation
+    totalOrundum += parseInt($("#annihilation").val())/7*daysF;
+    // mission calculation
+    for (var i = 0; i < mission.length; i++) {
+      if ($(mission[i].length)) {
+        if ($(mission[i]).is(":checked")) {
+          let temp = parseInt($(mission[i]).val())/7*daysF;
+          totalOrundum+= temp;
+        }
+      }
+    }
+    //store calculation
+    for (var i = 0; i < certStore.length; i++) {
+      if ($(certStore[i].length)) {
+        if ($(certStore[i]).is(":checked")) {
+          let temp = parseInt($(certStore[i]).val())/30*daysF;
+          totalOrundum+= temp;
+        }
+      }
+    }
+    if ($(monthlyNum[0]).is(":checked")) {
+      totalOrundum += daysF*200;
+    }
+    if ($(monthlyNum[1]).is(":checked")) {
+      totalOrundum += parseInt($("#monthlyCardsUsed").val())*6*180;
+    }
+    // event calculation
+    for (let i = 0; i < fields.length; i++) {
+        fieldsValue[i] = 0;
+        if ($(fields[i]).length) {
+          if (($(fields[i]).is(":checked"))) {
+             fieldsValue[i] = parseInt($(fields[i]).val());
+             totalOrundum += fieldsValue[i];
+          }
+        }
+      }
+      totalOrundum += (parseInt($("#op").val())*180) + (parseInt($("#orundum").val())) - (parseInt($("#reserveOP").val()*180));
+      let estimatedPulls = Math.floor(totalOrundum/600) + parseInt($("#hhTicket").val());
+      $("#resultView").html("<h2>Your Estimated Pulls: "+estimatedPulls+"</h2>");
+  }
+</script>
 </html>
