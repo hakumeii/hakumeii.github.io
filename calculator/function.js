@@ -12,7 +12,7 @@
   document.querySelector("input[id=startDate]").value = y + "-" + m + "-" + d;
   const fields = ["#ope1","#ope2","#ope3", "#ope4","#ope5","#ope6","#ope7","#ope8","#ope9","#ope10","#ope11","#hhe1","#hhe2","#hhe3", "#hhe4","#hhe5","#hhe6","#hhe7","#hhe8","#hhe9","#hhe10","#hhe11","#lhe1","#lhe2","#lhe3", "#lhe4","#lhe5","#lhe6","#lhe7","#lhe8","#lhe9","#lhe10","#lhe11","#oru1","o#ru2","#oru3", "#oru4","#oru5","#oru6","#oru7","#oru8","#oru9","#oru10","#oru11"];
   const mission = ["#dailyMission","#weeklyMission"];
-  const certStore = ["#t1green","#t2green","#supplies"];
+  const certStore = ["#t1green","#t2green","#supplies","#orugreen"];
   const monthlyNum = ["#useMonthlyCard", "#includeBonusOp"];
   let fieldsValue = [];
   let totalOrundum = 0;
