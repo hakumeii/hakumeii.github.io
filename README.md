@@ -1,2 +1,2 @@
 # hakumeii.github.io
-web
+ website
