@@ -47,12 +47,12 @@
     totalOrundum = 0;
     let daysF = parseInt($("#elapsedDays").val())
     //annihilation
-    totalOrundum += parseInt($("#annihilation").val())/7*daysF;
+    totalOrundum += parseInt($("#annihilation").val())*Math.floor(daysF/7);
     // mission calculation
     for (var i = 0; i < mission.length; i++) {
       if ($(mission[i].length)) {
         if ($(mission[i]).is(":checked")) {
-          let temp = parseInt($(mission[i]).val())/7*daysF;
+          let temp = parseInt($(mission[i]).val())*Math.floor(daysF/7);
           totalOrundum+= temp;
         }
       }
@@ -61,7 +61,7 @@
     for (var i = 0; i < certStore.length; i++) {
       if ($(certStore[i].length)) {
         if ($(certStore[i]).is(":checked")) {
-          let temp = parseInt($(certStore[i]).val())/30*daysF;
+          let temp = parseInt($(certStore[i]).val())*Math.floor(daysF/30);
           totalOrundum+= temp;
         }
       }
