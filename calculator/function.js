@@ -51,8 +51,12 @@
     // mission calculation
     for (var i = 0; i < mission.length; i++) {
       if ($(mission[i].length)) {
-        if ($(mission[i]).is(":checked")) {
-          let temp = parseInt($(mission[i]).val())*Math.floor(daysF/7);
+        if ($(mission[0]).is(":checked")) {
+          let temp = parseInt($(mission[0]).val())*daysF;
+          totalOrundum+= temp;
+        }
+if ($(mission[1]).is(":checked")) {
+          let temp = parseInt($(mission[1]).val())*Math.floor(daysF/7);
           totalOrundum+= temp;
         }
       }
