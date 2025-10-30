@@ -1,93 +1,103 @@
-  var now = new Date();
-  var y = now.getFullYear();
-  var m = now.getMonth() + 1;
-  var d = now.getDate();
+// Set default start and end dates to today (yyyy-mm-dd)
+const now = new Date();
+const y = now.getFullYear();
+const m = String(now.getMonth() + 1).padStart(2, "0");
+const d = String(now.getDate()).padStart(2, "0");
+const today = `${y}-${m}-${d}`;
 
-  //月と日は0埋めを行う
-  m = m < 10 ? "0" + m : m;
-  d = d < 10 ? "0" + d : d;
+document.querySelector("#endDate").value = today;
+document.querySelector("#startDate").value = today;
 
-  //yyyy-mm-dd形式
-  document.querySelector("input[id=endDate]").value = y + "-" + m + "-" + d;
-  document.querySelector("input[id=startDate]").value = y + "-" + m + "-" + d;
-  const fields = ["#ope1","#ope2","#ope3", "#ope4","#ope5","#ope6","#ope7","#ope8","#ope9","#ope10","#ope11","#hhe1","#hhe2","#hhe3", "#hhe4","#hhe5","#hhe6","#hhe7","#hhe8","#hhe9","#hhe10","#hhe11","#lhe1","#lhe2","#lhe3", "#lhe4","#lhe5","#lhe6","#lhe7","#lhe8","#lhe9","#lhe10","#lhe11","#oru1","#oru2","#oru3", "#oru4","#oru5","#oru6","#oru7","#oru8","#oru9","#oru10","#oru11","#ore1","#ore2","#ore3", "#ore4","#ore5","#ore6","#ore7","#ore8","#ore9","#ore10","#ore11"];
-  const mission = ["#dailyMission","#weeklyMission"];
-  const certStore = ["#t1green","#t2green","#supplies","#orugreen"];
-  const monthlyNum = ["#useMonthlyCard", "#includeBonusOp"];
-  let fieldsValue = [];
-  let totalOrundum = 0;
-  function updateDate() {
-    var start = new Date(document.getElementById("startDate").value);
-    var end = new Date(document.getElementById("endDate").value);
-    var timeDiff = end.getTime() - start.getTime();
-    let daysDiff = 0;
-    if (timeDiff<0) {
-      document.querySelector("input[id=elapsedDays]").value = 0;
-      return 0;
-    }
-    daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
-    document.querySelector("input[id=elapsedDays]").value = daysDiff;
-  }
-  function updateMonthly() {
-      if ($('#useMonthlyCard').is(":checked")) {
-        let days = parseInt($('#elapsedDays').val());
-        document.querySelector("input[id=monthlyCardsUsed]").value = Math.ceil(days/30);
-        $("#includeBonusOp").prop('disabled', false);
-      }
-      else {
-        document.querySelector("input[id=monthlyCardsUsed]").value = 0;
-        $("#includeBonusOp").prop('disabled', true);
-        $("#includeBonusOp").prop('checked', false);
-      }
+// Field groups
+const fields = [
+  "#ope1", "#ope2", "#ope3", "#ope4", "#ope5", "#ope6", "#ope7", "#ope8", "#ope9", "#ope10", "#ope11",
+  "#hhe1", "#hhe2", "#hhe3", "#hhe4", "#hhe5", "#hhe6", "#hhe7", "#hhe8", "#hhe9", "#hhe10", "#hhe11",
+  "#lhe1", "#lhe2", "#lhe3", "#lhe4", "#lhe5", "#lhe6", "#lhe7", "#lhe8", "#lhe9", "#lhe10", "#lhe11",
+  "#oru1", "#oru2", "#oru3", "#oru4", "#oru5", "#oru6", "#oru7", "#oru8", "#oru9", "#oru10", "#oru11",
+  "#ore1", "#ore2", "#ore3", "#ore4", "#ore5", "#ore6", "#ore7", "#ore8", "#ore9", "#ore10", "#ore11"
+];
 
+const mission = ["#dailyMission", "#weeklyMission"];
+const certStore = ["#t1green", "#t2green", "#supplies", "#orugreen"];
+const monthlyNum = ["#useMonthlyCard", "#includeBonusOp"];
+
+let totalOrundum = 0;
+
+// --- Utility functions ---
+
+function getDaysBetween(startDate, endDate) {
+  const start = new Date(startDate);
+  const end = new Date(endDate);
+  const diff = end - start;
+  return diff < 0 ? 0 : Math.ceil(diff / (1000 * 3600 * 24));
+}
+
+function updateDate() {
+  const startDate = $("#startDate").val();
+  const endDate = $("#endDate").val();
+  const daysDiff = getDaysBetween(startDate, endDate);
+  $("#elapsedDays").val(daysDiff);
+  return daysDiff;
+}
+
+function updateMonthly(days) {
+  if ($("#useMonthlyCard").is(":checked")) {
+    const used = Math.ceil(days / 30);
+    $("#monthlyCardsUsed").val(used);
+    $("#includeBonusOp").prop("disabled", false);
+  } else {
+    $("#monthlyCardsUsed").val(0);
+    $("#includeBonusOp").prop({ disabled: true, checked: false });
   }
-  function calculateIT() {
-    updateDate();
-    updateMonthly();
-    totalOrundum = 0;
-    let daysF = parseInt($("#elapsedDays").val())
-    //annihilation
-    totalOrundum += parseInt($("#annihilation").val())*Math.floor(daysF/7);
-    // mission calculation
-        if ($(mission[0]).is(":checked")) {
-          let temp = parseInt($(mission[0]).val())*daysF;
-          totalOrundum+= temp;
-        }
-if ($(mission[1]).is(":checked")) {
-          let temp = parseInt($(mission[1]).val())*Math.floor(daysF/7);
-          totalOrundum+= temp;
-        }
-    //store calculation
-    for (var i = 0; i < certStore.length; i++) {
-      if ($(certStore[i].length)) {
-        if ($(certStore[i]).is(":checked")) {
-          let temp = parseInt($(certStore[i]).val())*Math.floor(daysF/30);
-          totalOrundum+= temp;
-        }
-      }
+}
+
+function addCheckedValue(selectors, multiplier = 1) {
+  let total = 0;
+  selectors.forEach(sel => {
+    const $el = $(sel);
+    if ($el.length && $el.is(":checked")) {
+      total += parseInt($el.val()) * multiplier;
     }
-    if ($(monthlyNum[0]).is(":checked")) {
-      totalOrundum += daysF*200;
-    }
-    if ($(monthlyNum[1]).is(":checked")) {
-      totalOrundum += parseInt($("#monthlyCardsUsed").val())*6*180;
-    }
-    // event calculation
-    for (let i = 0; i < fields.length; i++) {
-        fieldsValue[i] = 0;
-        if ($(fields[i]).length) {
-          if (($(fields[i]).is(":checked"))) {
-             fieldsValue[i] = parseInt($(fields[i]).val());
-             totalOrundum += fieldsValue[i];
-          }
-        }
-      }
-      totalOrundum += (parseInt($("#op").val())*180) + (parseInt($("#orundum").val())) - (parseInt($("#reserveOP").val()*180));
-      let estimatedPulls = Math.floor(totalOrundum/600) + parseInt($("#hhTicket").val());
-      if (isNaN(estimatedPulls)) {
-        $("#resultView").html("<h2>Error</h2>");
-      }
-      else{
-        $("#resultView").html("<h2>Your Estimated Pulls: "+estimatedPulls+"</h2>");
-      }
-  }
+  });
+  return total;
+}
+
+// --- Main calculation function ---
+
+function calculateIT() {
+  const days = updateDate();
+  updateMonthly(days);
+  totalOrundum = 0;
+
+  // Weekly annihilation
+  totalOrundum += parseInt($("#annihilation").val()) * Math.floor(days / 7);
+
+  // Missions
+  totalOrundum += $("#dailyMission").is(":checked") ? parseInt($("#dailyMission").val()) * days : 0;
+  totalOrundum += $("#weeklyMission").is(":checked") ? parseInt($("#weeklyMission").val()) * Math.floor(days / 7) : 0;
+
+  // Store rewards (monthly)
+  totalOrundum += addCheckedValue(certStore, Math.floor(days / 30));
+
+  // Monthly card bonuses
+  if ($("#useMonthlyCard").is(":checked")) totalOrundum += days * 200;
+  if ($("#includeBonusOp").is(":checked")) totalOrundum += parseInt($("#monthlyCardsUsed").val()) * 6 * 180;
+
+  // Event fields
+  totalOrundum += addCheckedValue(fields);
+
+  // Manual inputs
+  totalOrundum +=
+    (parseInt($("#op").val()) * 180) +
+    parseInt($("#orundum").val()) -
+    (parseInt($("#reserveOP").val()) * 180);
+
+  // Final pulls
+  const estimatedPulls = Math.floor(totalOrundum / 600) + parseInt($("#hhTicket").val());
+
+  $("#resultView").html(
+    isNaN(estimatedPulls)
+      ? "<h2>Error</h2>"
+      : `<h2>Your Estimated Pulls: ${estimatedPulls}</h2>`
+  );
+}
