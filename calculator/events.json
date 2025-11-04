@@ -1,0 +1,78 @@
+[
+  {
+    "name": "Exusiai Alter and Lemuen Event",
+    "rewards": [
+      { "label": "41 OP", "type": "checkbox", "value": 7380 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "24 Limited HH Ticket", "type": "checkbox", "value": 14400 }
+    ]
+  },
+  {
+    "name": "Act Or Die - Phantom Alter",
+    "rewards": [
+      { "label": "28 OP", "type": "checkbox", "value": 5040 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 }
+    ]
+  },
+  {
+    "name": "Path of Life Rerun - Ulpianus",
+    "rewards": [
+      { "label": "29 OP", "type": "checkbox", "value": 5220 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9000 Orundum", "type": "radio", "value": 9000 }
+    ],
+    "notes": "1805 Purple Cert"
+  },
+  {
+    "name": "Fantasy in The Mirage - Leizi Alter",
+    "rewards": [
+      { "label": "18 OP", "type": "checkbox", "value": 3240 }
+    ]
+  },
+  {
+    "name": "Ato - Hoshiguma Alter",
+    "rewards": [
+      { "label": "40 OP", "type": "checkbox", "value": 7200 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "24 Limited HH Ticket", "type": "checkbox", "value": 14400 }
+    ]
+  },
+  {
+    "name": "Adventure That Cannot Wait for The Sun Rerun - Pepe",
+    "rewards": [
+      { "label": "38 OP", "type": "checkbox", "value": 6840 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9200 Orundum", "type": "radio", "value": 9200 }
+    ],
+    "notes": "1840 Purple Cert"
+  },
+  {
+    "name": "Somniliquium Serenum - Ave Mujica collab",
+    "rewards": [
+      { "label": "26 OP", "type": "checkbox", "value": 4680 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "20 Limited HH Ticket", "type": "checkbox", "value": 12000 }
+    ]
+  },
+  {
+    "name": "Ending a Grand Overture Rerun - Vina Victoria / Siege Alter",
+    "rewards": [
+      { "label": "30 OP", "type": "checkbox", "value": 5400 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9100 Orundum", "type": "radio", "value": 9100 }
+    ],
+    "notes": "1825 Purple Cert"
+  },
+  {
+    "name": "Episode 16: Abnormal Spectrum - Mantra",
+    "rewards": [
+      { "label": "45 OP - including secret interlude, H stages and simulation", "type": "checkbox", "value": 8100 }
+    ]
+  }
+]
