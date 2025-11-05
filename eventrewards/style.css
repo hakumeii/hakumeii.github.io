@@ -1,0 +1,88 @@
+/* Footer */
+.footer {
+    padding: 20px 0;
+    margin-top: 30px;
+}
+
+.social-icons a {
+    color: whitesmoke;
+    font-size: 2.5rem;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+/* Product Cards */
+.card {
+    position: relative;
+    margin-bottom: 20px;
+    color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #2e2f30;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: all 0.2s ease;
+}
+
+.card-body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 8px;
+}
+
+.card.selected {
+    border: 3px solid #0d6efd;
+    box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+}
+
+.badge-name {
+    display: block;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: auto;
+    background-color: #40BFB4;
+    color: #000;
+    text-align: center;
+}
+
+.bottom-row {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge-stock {
+    font-size: 1.1rem;
+    background-color:  #C8F463;
+    color: #000;
+}
+
+.badge-price {
+    font-size: 1.1rem;
+    background-color: #FF6B6B;
+    color: #000;
+}
+
+.form-check {
+    margin: 0;
+}
+
+.form-check-input {
+    cursor: pointer;
+}
