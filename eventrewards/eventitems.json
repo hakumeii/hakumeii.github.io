@@ -3,9 +3,18 @@
     {
       "uid": "event1",
       "title": "Act Or Die",
+      "rewards": [
+        {"id":"op","total":28},
+        {"id":"welfare","name": "Ms. Cristine"}
+      ],
+      "farm": [
+        {"id":"device3","stage":"AD-6"},
+        {"id":"ester3","stage":"AD-7"},
+        {"id":"alloy3", "stage":"AD-8"}
+      ],
       "items": [
-        {"id":"outfit","stock":1,"price":500,"suffix":" Aciddrop"},
-        {"id":"token5","stock":1,"price":1400, "suffix": "(All)"},
+        {"id":"outfit","stock":1,"price":500,"suffix":" Aciddrop", "url": "zz_accidrop_tea.png"},
+        {"id":"token5","stock":1,"price":1400, "suffix": "(5 All)"},
         {"id":"tkt_gacha","stock":3,"price":150},
         {"id":"modblock","stock":2,"price":75},
         {"id":"ncs","stock":5,"price":100},

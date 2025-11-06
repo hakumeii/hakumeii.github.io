@@ -36,28 +36,39 @@ Promise.all([
   })
   .catch(err => console.error('Error loading data:', err));
 
-// --- Display event items ---
+// --- Display selected event ---
 function displayEvent(uid) {
-  grid.innerHTML = ''; // Clear previous
+  grid.innerHTML = ''; // Clear product grid
   totalValue.textContent = 0; // Reset total
   allChecked = false;
+
+  const rewardsDiv = document.getElementById('rewards');
+  const farmDiv = document.getElementById('farmable');
+  rewardsDiv.innerHTML = '';
+  farmDiv.innerHTML = '';
 
   const event = events.find(e => e.uid === uid);
   if (!event) return;
 
+  // Display rewards and farm sections if available
+  displayRewards(event);
+  displayFarm(event);
+
+  // --- Display event items ---
   event.items.forEach(item => {
-    // find product info (for image and proper name)
     const product = products.find(p => p.id === item.id) || {};
 
     const col = document.createElement('div');
-    col.className = 'col-md-2 col-sm-4';
+    col.className = 'col-md-2 col-sm-4 col-6 mb-3';
 
     const displayName = product.name || item.name || 'Unknown';
     const suffix = item.suffix ? ` ${item.suffix}` : '';
-    const imageSrc = product.url ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}` : 'img/placeholder.png';
+    const imageSrc = product.url
+      ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}`
+      : (item.url ? item.url : 'img/placeholder.png');
 
     col.innerHTML = `
-      <div class="card h-125s" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
+      <div class="card h-130" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
           <div class="card-body d-flex flex-column justify-content-between">
               <span class="badge badge-name" style="white-space: pre;">${displayName}${suffix}</span>
               <div class="bottom-row mt-auto">
@@ -91,6 +102,77 @@ function displayEvent(uid) {
 
     grid.appendChild(col);
   });
+}
+
+// --- Display rewards section ---
+function displayRewards(event) {
+  const rewardsDiv = document.getElementById('rewards');
+  if (!event.rewards || event.rewards.length === 0) return;
+
+  const header = document.createElement('h5');
+  header.className = 'fw-bold my-2';
+  header.textContent = 'Event Rewards';
+  rewardsDiv.appendChild(header);
+
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  event.rewards.forEach(rw => {
+    const product = products.find(p => p.id === rw.id) || {};
+    const imageSrc = product.url
+      ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}`
+      : 'img/placeholder.png';
+
+    const name = rw.name || product.name || 'Unknown';
+    const total = rw.total ? `${rw.total}` : '';
+
+    row.innerHTML += `
+      <div class="col-md-2 col-sm-4 col-6 mb-3">
+        <div class="card h-130" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <span class="badge badge-name" style="white-space: pre;">${name}</span>
+            <span class="badge badge-stock">${total}</span>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  rewardsDiv.appendChild(row);
+}
+
+// --- Display farmable section ---
+function displayFarm(event) {
+  const farmDiv = document.getElementById('farmable');
+  if (!event.farm || event.farm.length === 0) return;
+
+  const header = document.createElement('h5');
+  header.className = 'fw-bold my-2';
+  header.textContent = 'Farmable Materials';
+  farmDiv.appendChild(header);
+
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  event.farm.forEach(fm => {
+    const product = products.find(p => p.id === fm.id) || {};
+    const imageSrc = product.url
+      ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}`
+      : 'img/placeholder.png';
+
+    row.innerHTML += `
+      <div class="col-md-2 col-sm-4 col-6 mb-3">
+        <div class="card h-130" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <span class="badge badge-name" style="white-space: pre; visibility:hidden" >${product.name}</span>
+              <div class="badge badge-stock" > ${fm.stage}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+
+  farmDiv.appendChild(row);
 }
 
 // --- Update total ---

@@ -77,12 +77,12 @@
   { "id": "infrag", "url": "STORY_REVIEW_COIN.png", "name": "Information \nFragment" },
   { "id": "tkt_gacha", "url": "TKT_GACHA.png", "name": "HH Ticket" },
   { "id": "tkt_recruit", "url": "TKT_RECRUIT.png", "name": "tkt_recruit" },
-  { "id": "sanity120", "url": "ap_supply_lt_120.png", "name": "sanity120" },
+  { "id": "sanity120", "url": "ap_supply_lt_120.png", "name": "Concentrate\nSanity Booster" },
   { "id": "sanity80", "url": "ap_supply_lt_80.png", "name": "sanity80" },
   { "id": "furnitureset", "url": "furnitureset.png", "name": "Furniture \nSet" },
   { "id": "modblock", "url": "mod_unlock_token.png", "name": "Module \nData Block" },
   { "id": "modstick", "url": "mod_update_token_1.png", "name": "Module \nData Stick" },
-  { "id": "modinstrument", "url": "mod_update_token_2.png", "name": "Module \nData Instrument" },
+  { "id": "modinstrument", "url": "mod_update_token_2.png", "name": "Module Data\n Instrument" },
   { "id": "greenexp", "url": "sprite_exp_card_t1.png", "name": "Drill \nBattle Record" },
   { "id": "blueexp", "url": "sprite_exp_card_t2.png", "name": "Frontline \nBattle Record" },
   { "id": "yellowexp", "url": "sprite_exp_card_t3.png", "name": "Tactical\n Battle Record" },
@@ -90,5 +90,5 @@
   { "id": "token5", "url": "token5.png", "name": "Token 5*\n" },
   { "id": "token6", "url": "token6.png", "name": "Token 6*\n" },
   { "id": "furniturepart", "url": "COIN_FURN.png", "name": "Furniture \nPart" },
-  { "id": "outfit", "url": "outfit.png", "name": "Outfit\n" }
+  { "id": "outfit", "name": "Outfit\n" }
 ]
