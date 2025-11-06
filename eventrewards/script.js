@@ -44,8 +44,11 @@ function displayEvent(uid) {
 
   const rewardsDiv = document.getElementById('rewards');
   const farmDiv = document.getElementById('farmable');
+  const sanDiv = document.getElementById('sanitymath');
   rewardsDiv.innerHTML = '';
   farmDiv.innerHTML = '';
+  sanDiv.innerHTML='';
+
 
   const event = events.find(e => e.uid === uid);
   if (!event) return;
@@ -53,6 +56,7 @@ function displayEvent(uid) {
   // Display rewards and farm sections if available
   displayRewards(event);
   displayFarm(event);
+  displaySan(event);
 
   // --- Display event items ---
   event.items.forEach(item => {
@@ -174,7 +178,41 @@ function displayFarm(event) {
 
   farmDiv.appendChild(row);
 }
+//Sanity Math Section
+function displaySan(event) {
+  const sanDiv = document.getElementById('sanitymath');
+  if (!event.san || event.san.length === 0) return;
 
+  const header = document.createElement('h5');
+  header.className = 'fw-bold my-2';
+  header.textContent = 'Currency Available';
+  sanDiv.appendChild(header);
+  let sanitytotal = 0;
+
+  const row = document.createElement('div');
+  row.className = 'row';
+
+  event.san.forEach(s => {
+    const product = products.find(p => p.id === s.id) || {};
+    const imageSrc = product.url
+      ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}`
+      : 'img/placeholder.png';
+    sanitytotal+= parseInt(s.value);                              
+    row.innerHTML += `
+      <div class="col-md-2 col-sm-4 col-6 mb-3">
+        <div class="card h-130" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
+          <div class="card-body d-flex flex-column justify-content-between">
+            <span class="badge badge-name" style="white-space: pre;" >${s.not}</span>
+              <div class="badge badge-stock" > ${s.value}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  sanDiv.appendChild(row);
+  document.getElementById('totalSanity').textContent = sanitytotal;
+
+}
 // --- Update total ---
 function updateTotal() {
   const checkboxes = document.querySelectorAll('.form-check-input:checked');

@@ -37,6 +37,14 @@
         {"id":"ketone2","stock":25,"price":3},
         {"id":"cst1","stock":5,"price":6},
         {"id":"furniturepart","stock":200,"price":2,"suffix":"x20"}
+      ],
+      "san": [
+        {"id": "sanity", "value": 3300, "not": "Natural\n Gain Sanity"},
+        {"id": "mission", "value": 1530, "not": "Missions"},
+        {"id": "sanity120", "value": 480, "not": "Weekly \nBooster"},
+        {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
+        {"id": "exstage", "value": -250, "not": "EX and/or \nS stages"},
+        {"id": "annihilation", "value": -250, "not": "Annihilation"}
       ]
     },
     {

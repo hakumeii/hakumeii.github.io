@@ -90,5 +90,9 @@
   { "id": "token5", "url": "token5.png", "name": "Token 5*\n" },
   { "id": "token6", "url": "token6.png", "name": "Token 6*\n" },
   { "id": "furniturepart", "url": "COIN_FURN.png", "name": "Furniture \nPart" },
-  { "id": "outfit", "name": "Outfit\n" }
+  { "id": "outfit", "name": "Outfit\n" },
+  {"id": "annihilation", "url":"annihilation.png"},
+  {"id": "firstclear", "url":"firstclear.png"},
+  {"id": "exstage", "url":"EX.png"},
+  {"id": "missions", "url":"missions.png"}
 ]
