@@ -40,7 +40,7 @@
       ],
       "san": [
         {"id": "sanity", "value": 3300, "not": "Natural\n Gain Sanity"},
-        {"id": "mission", "value": 1530, "not": "Missions"},
+        {"id": "missions", "value": 1530, "not": "Missions"},
         {"id": "sanity120", "value": 480, "not": "Weekly \nBooster"},
         {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
         {"id": "exstage", "value": -250, "not": "EX and/or \nS stages"},
