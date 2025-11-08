@@ -5,7 +5,7 @@
       "title": "Act Or Die",
       "rewards": [
         {"id":"op","total":28},
-        {"id":"welfare","name": "Ms. Cristine"}
+        {"id":"welfare","name": "Miss. Christine", "url":"zz_christine.png"}
       ],
       "farm": [
         {"id":"device3","stage":"AD-6"},
@@ -13,7 +13,7 @@
         {"id":"alloy3", "stage":"AD-8"}
       ],
       "items": [
-        {"id":"outfit","stock":1,"price":500,"suffix":" Aciddrop", "url": "https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/zz_accidrop_tea.png"},
+        {"id":"outfit","stock":1,"price":500,"suffix":" Aciddrop", "url": "zz_accidrop_tea.png"},
         {"id":"token5","stock":1,"price":1400, "suffix": "(5 All)"},
         {"id":"tkt_gacha","stock":3,"price":150},
         {"id":"modblock","stock":2,"price":75},
@@ -43,24 +43,51 @@
         {"id": "missions", "value": 1530, "not": "Missions"},
         {"id": "sanity120", "value": 480, "not": "Weekly \nBooster"},
         {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
-        {"id": "exstage", "value": -250, "not": "EX and/or \nS stages"},
+        {"id": "exstage", "value": -250, "not": "EX stages"},
         {"id": "annihilation", "value": -250, "not": "Annihilation"}
       ]
     },
     {
       "uid": "event2",
       "title": "Path of Life Rerun",
+      "rewards": [
+        {"id":"op","total":29},
+        {"id":"welfare","name": "Underflow","url":"zz_underflow.png"},
+        {"id":"purplecert", "total": 1805}
+      ],
+      "farm": [
+        {"id":"crystal3","stage":"BP-5"},
+        {"id":"sugar3","stage":"BP-6"},
+        {"id":"alcohol1", "stage":"BP-7"}
+      ],
       "items": [
-        {
-          "name": "example_item_3",
-          "stock": 20,
-          "price": 75
-        },
-        {
-          "name": "example_item_4",
-          "stock": 8,
-          "price": 300
-        }
+          {"id": "token5", "stock": 1, "price": 1400,"suffix":"(5 All)"},
+          {"id": "tkt_gacha", "stock": 3, "price": 150},
+          {"id": "pprep", "stock": 1, "price": 100},
+          {"id": "salt4", "stock": 3, "price": 45},
+          {"id": "rma7024", "stock": 3, "price": 35},
+          {"id": "alloy4", "stock": 3, "price": 35},
+          {"id": "furnitureset", "stock": 1, "price": 410},
+          {"id": "ester3", "stock": 5, "price": 8},
+          {"id": "grind1", "stock": 5, "price": 12},
+          {"id": "lmd", "stock": 20, "price": 7,"suffix":"x5000"},
+          {"id": "goldexp", "stock": 5, "price": 5,"suffix":"x2"},
+          {"id": "yellowexp", "stock": 10, "price": 3, "suffix":"x2"},
+          {"id": "blueexp", "stock": 20, "price": 1,"suffix": "x2"},
+          {"id": "skill3", "stock": 10, "price": 4},
+          {"id": "skill2", "stock": 20, "price": 2},
+          {"id": "sugar2", "stock": 8, "price": 3},
+          {"id": "iron2", "stock": 8, "price": 3},
+          {"id": "device2", "stock": 8, "price": 4},
+          {"id": "tnk1", "stock": 5, "price": 6}
+        ],
+      "san": [
+        {"id": "sanity", "value": 2340, "not": "Natural\n Gain Sanity"},
+        {"id": "missions", "value": 1210, "not": "Missions"},
+        {"id": "sanity120", "value": 480, "not": "Weekly \nBooster"},
+        {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
+        {"id": "exstage", "value": -250, "not": "EX stages"},
+        {"id": "annihilation", "value": -250, "not": "Annihilation"}
       ]
     }
   ]

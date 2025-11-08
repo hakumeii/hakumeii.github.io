@@ -28,7 +28,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    cursor: pointer;
     border: 2px solid transparent;
     border-radius: 0.5rem;
     overflow: hidden;
@@ -39,6 +38,9 @@
 }
 #rewards .card{
     cursor: auto;
+}
+#productGrid .card{
+    cursor: pointer;
 }
 .card-body {
     position: relative;
@@ -51,7 +53,7 @@
 }
 
 .card.selected {
-    border: 6px solid #0d6efd;
+    border: 2px solid #0d6efd;
     box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
 }
 

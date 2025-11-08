@@ -54,7 +54,7 @@
   { "id": "pgel3", "url": "MTL_SL_PGEL3.png", "name": "Coagulating \nGel" },
   { "id": "pgel4", "url": "MTL_SL_PGEL4.png", "name": "Polymerized \nGel" },
   { "id": "cfs", "url": "MTL_SL_PLCF.png", "name": "Cutting \nFluid Solution" },
-  { "id": "prepp", "url": "MTL_SL_PP.png", "name": "Polymerization\n Preparation" },
+  { "id": "pprep", "url": "MTL_SL_PP.png", "name": "Polymerization\n Preparation" },
   { "id": "nodule4", "url": "MTL_SL_QGT.png", "name": "Chiral \nRefractor" },
   { "id": "rma7012", "url": "MTL_SL_RMA7012.png", "name": "RMA70-12" },
   { "id": "rma7024", "url": "MTL_SL_RMA7024.png", "name": "RMA70-24" },
