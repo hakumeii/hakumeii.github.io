@@ -76,7 +76,7 @@
   { "id": "purplecert", "url": "REP_COIN.png", "name": "Purple \nCertificate" },
   { "id": "infrag", "url": "STORY_REVIEW_COIN.png", "name": "Information \nFragment" },
   { "id": "tkt_gacha", "url": "TKT_GACHA.png", "name": "HH Ticket" },
-  { "id": "tkt_recruit", "url": "TKT_RECRUIT.png", "name": "tkt_recruit" },
+  { "id": "tkt_recruit", "url": "TKT_RECRUIT.png", "name": "Recruitment\n Permit" },
   { "id": "sanity120", "url": "ap_supply_lt_120.png", "name": "Concentrate\nSanity Booster" },
   { "id": "sanity80", "url": "ap_supply_lt_80.png", "name": "sanity80" },
   { "id": "furnitureset", "url": "furnitureset.png", "name": "Furniture \nSet" },

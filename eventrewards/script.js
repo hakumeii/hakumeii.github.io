@@ -48,8 +48,7 @@ function displayEvent(uid) {
   const sanDiv = document.getElementById('sanitymath');
   rewardsDiv.innerHTML = '';
   farmDiv.innerHTML = '';
-  sanDiv.innerHTML='';
-
+  sanDiv.innerHTML = '';
 
   const event = events.find(e => e.uid === uid);
   if (!event) return;
@@ -58,7 +57,8 @@ function displayEvent(uid) {
   displayRewards(event);
   displayFarm(event);
   displaySan(event);
-
+  updateSanityTotal();
+  updateRemainingCurrency();
   // --- Display event items ---
   event.items.forEach(item => {
     const product = products.find(p => p.id === item.id) || {};
@@ -162,7 +162,7 @@ function displayFarm(event) {
   event.farm.forEach(fm => {
     const product = products.find(p => p.id === fm.id) || {};
     const imageSrc = product.url
-      ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}`
+      ? `${baseUrl}${product.url}`
       : 'img/placeholder.png';
 
     row.innerHTML += `
@@ -170,7 +170,7 @@ function displayFarm(event) {
         <div class="card h-130" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
           <div class="card-body d-flex flex-column justify-content-between">
             <span class="badge badge-name" style="white-space: pre; visibility:hidden" >${product.name}</span>
-              <div class="badge badge-stock" > ${fm.stage}</div>
+            <div class="badge badge-stock">${fm.stage}</div>
           </div>
         </div>
       </div>
@@ -179,7 +179,8 @@ function displayFarm(event) {
 
   farmDiv.appendChild(row);
 }
-// --- Display sanity section with checkboxes --- 
+
+// --- Display sanity section with checkboxes ---
 function displaySan(event) {
   const sanDiv = document.getElementById('sanitymath');
   if (!event.san || event.san.length === 0) return;
@@ -195,7 +196,7 @@ function displaySan(event) {
   event.san.forEach(s => {
     const product = products.find(p => p.id === s.id) || {};
     const imageSrc = product.url
-      ? `https://raw.githubusercontent.com/hakumeii/hakumeii.github.io/refs/heads/master/images/${product.url}`
+      ? `${baseUrl}${product.url}`
       : 'img/placeholder.png';
 
     const checkboxId = `checkSan${s.id}`;
@@ -208,7 +209,6 @@ function displaySan(event) {
       <div class="card h-130" style="background-image: url('${imageSrc}'); background-size: cover; background-position: center;">
         <div class="card-body d-flex flex-column justify-content-between">
           <span class="badge badge-name" style="white-space: pre;">${s.not}</span>
-          <!-- Bottom Row with value and checkbox -->
           <div class="bottom-row mt-auto d-flex justify-content-between">
             <div class="badge badge-stock">${s.value}</div>
             <div class="form-check text-end mt-1">
@@ -229,47 +229,69 @@ function displaySan(event) {
     // Toggle checkbox when clicking the card (like product grid)
     card.addEventListener('click', (e) => {
       if (e.target.tagName !== 'INPUT') {
-        checkbox.checked = !checkbox.checked;  // Toggle checkbox on card click
-        card.classList.toggle('selected', checkbox.checked);  // Highlight card
+        checkbox.checked = !checkbox.checked;
+        card.classList.toggle('selected', checkbox.checked);
       }
       updateSanityTotal();  // Update sanity total when a checkbox is toggled
     });
 
     // Update sanity total when checkbox changes
     checkbox.addEventListener('change', () => {
-      card.classList.toggle('selected', checkbox.checked);  // Highlight card
+      card.classList.toggle('selected', checkbox.checked);
       updateSanityTotal();
     });
   });
 
   // Append the row of cards to the sanity section
   sanDiv.appendChild(row);
-
-  // --- Function to update the sanity total ---
-  function updateSanityTotal() {
-    const checkboxes = sanDiv.querySelectorAll('input[type="checkbox"]:checked');
-    let total = 0;
-
-    checkboxes.forEach(cb => {
-      total += Number(cb.value); // Add the value of each checked checkbox
-    });
-
-    // Update the displayed total
-    const totalSanityElement = document.getElementById('totalSanity');
-    totalSanityElement.textContent = total;
-  }
-  updateSanityTotal();
 }
 
-
-
-
-// --- Update total ---
+// --- Update total for event items ---
 function updateTotal() {
   const checkboxes = document.querySelectorAll('#productGrid .form-check-input:checked');
-  let total = 0;
-  checkboxes.forEach(cb => total += Number(cb.value));
-  totalValue.textContent = total;
+  let totalItems = 0;
+
+  checkboxes.forEach(cb => totalItems += Number(cb.value));
+  totalValue.textContent = totalItems;
+
+  // Recalculate the remaining or shortage currency
+  updateRemainingCurrency();
+}
+
+// --- Update total for sanity items ---
+function updateSanityTotal() {
+  const checkboxes = document.querySelectorAll('#sanitymath .form-check-input:checked');
+  let totalSanity = 0;
+
+  checkboxes.forEach(cb => {
+    totalSanity += Number(cb.value);
+  });
+
+  const totalSanityElement = document.getElementById('totalSanity');
+  totalSanityElement.textContent = totalSanity;
+
+  updateRemainingCurrency();
+}
+
+// --- Calculate and update remaining or shortage currency ---
+function updateRemainingCurrency() {
+  const totalSanity = Number(document.getElementById('totalSanity').textContent);
+  const totalItems = Number(document.getElementById('totalValue').textContent);
+
+  const resultElement = document.getElementById('currencyResult');
+  const difference = totalSanity - totalItems;
+
+  const labelElement = document.getElementById('currencyLabel');
+
+  if (difference >= 0) {
+    resultElement.textContent = `${difference}`;
+    labelElement.textContent = "Remaining Currency:";
+    resultElement.style.color = 'green';
+  } else {
+    resultElement.textContent = `${Math.abs(difference)}`;
+    labelElement.textContent = "Shortage Currency:";
+    resultElement.style.color = 'red';
+  }
 }
 
 // --- Check/Uncheck all ---

@@ -5,7 +5,7 @@
       "title": "Act Or Die",
       "rewards": [
         {"id":"op","total":28},
-        {"id":"welfare","name": "Miss. Christine", "url":"zz_christine.png"}
+        {"id":"welfare","name": "Miss.Christine", "url":"zz_christine.png"}
       ],
       "farm": [
         {"id":"device3","stage":"AD-6"},
@@ -88,6 +88,45 @@
         {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
         {"id": "exstage", "value": -250, "not": "EX stages"},
         {"id": "annihilation", "value": -250, "not": "Annihilation"}
+      ]
+    },
+    {
+      "uid":"event3",
+      "title":"Fantasy in The Mirage",
+      "rewards": [
+        {"id":"op","total":18}
+      ],
+      "farm": [
+        {"id":"rma7012","stage":"FM-7"},
+        {"id":"salt3", "stage":"FM-8"}
+      ],
+      "items":[
+        { "id": "outfit", "stock": 1, "price": 350, "suffix":" Bison","url":"zz_bison_00.png"},
+        { "id": "infrag", "stock": 7, "price": 10 },
+        { "id": "modblock", "stock": 2, "price": 100 },
+        { "id": "modinstrument", "stock": 8, "price": 30 },
+        { "id": "modstick", "stock": 40, "price": 10 },
+        { "id": "nodule5", "stock": 1, "price": 200 },
+        { "id": "catalyst", "stock": 1, "price": 65 },
+        { "id": "nodule4", "stock": 2, "price": 60 },
+        { "id": "iron3", "stock": 4, "price": 20 },
+        { "id": "cycli3", "stock": 4, "price": 25 },
+        { "id": "lmd", "stock": 10, "price": 5 ,"suffix":"x2000"},
+        { "id": "goldexp", "stock": 5, "price": 5 },
+        { "id": "yellowexp", "stock": 5, "price": 5 },
+        { "id": "skill3", "stock": 5, "price": 6 },
+        { "id": "skill2", "stock": 5, "price": 6, "suffix":"x2"},
+        { "id": "gold3", "stock": 5, "price": 4, "suffix":"x4" },
+        { "id": "ketone2", "stock": 5, "price": 6 },
+        { "id": "tkt_recruit", "stock": 5, "price": 30 },
+        { "id": "furniturepart", "stock": 10, "price": 4, "suffix":"x10"}
+      ],
+      "san": [
+        {"id": "sanity", "value": 1620, "not": "Natural\n Gain Sanity"},
+        {"id": "sanity120", "value": 240, "not": "Weekly \nBooster"},
+        {"id": "firstclear", "value": 560, "not": "First-time \nClear"},
+        {"id": "exstage", "value": -124, "not": "CM stages"},
+        {"id": "annihilation", "value": -125, "not": "Annihilation"}
       ]
     }
   ]
