@@ -84,9 +84,9 @@
           {"id": "tnk1", "stock": 5, "price": 6}
         ],
       "san": [
-        {"id": "sanity", "value": 2340, "not": "Natural\n Gain Sanity"},
+        {"id": "sanity", "value": 2360, "not": "Natural\n Gain Sanity"},
         {"id": "missions", "value": 1210, "not": "Missions"},
-        {"id": "sanity120", "value": 480, "not": "Weekly \nBooster"},
+        {"id": "sanity120", "value": 240, "not": "Weekly \nBooster"},
         {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
         {"id": "exstage", "value": -250, "not": "EX stages"},
         {"id": "annihilation", "value": -250, "not": "Annihilation"}
