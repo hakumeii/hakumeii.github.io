@@ -128,6 +128,49 @@
         {"id": "exstage", "value": -124, "not": "CM stages"},
         {"id": "annihilation", "value": -125, "not": "Annihilation"}
       ]
+    },
+    {
+      "uid": "event4",
+      "title": "Adventure Cannot Wait For The Sun Rerun",
+      "rewards": [
+        {"id":"op","total":29},
+        {"id":"welfare","name": "Papyrus","url":"zz_papyrus.png"},
+        {"id":"purplecert", "total": 1840}
+      ],
+      "farm": [
+        {"id":"iron3","stage":"AS-7"},
+        {"id":"grind1","stage":"AS-8"},
+        {"id":"cycli3", "stage":"AS-9"}
+      ],
+      "items": [
+          {"id": "token5", "stock": 1, "price": 1400,"suffix":"(5 All)"},
+          {"id": "tkt_gacha", "stock": 3, "price": 150},
+          {"id": "crystal5", "stock": 1, "price": 100},
+          {"id": "rock4", "stock": 3, "price": 25},
+          {"id": "grind2", "stock": 3, "price": 35},
+          {"id": "pgel4", "stock": 3, "price": 30},
+          {"id": "furnitureset", "stock": 1, "price": 390},
+          {"id": "sugar3", "stock": 5, "price": 8},
+          {"id": "ccf", "stock": 5, "price": 12},
+          {"id": "lmd", "stock": 20, "price": 7,"suffix":"x5000"},
+          {"id": "goldexp", "stock": 5, "price": 5,"suffix":"x2"},
+          {"id": "yellowexp", "stock": 10, "price": 3, "suffix":"x2"},
+          {"id": "blueexp", "stock": 20, "price": 1,"suffix": "x2"},
+          {"id": "skill3", "stock": 10, "price": 4},
+          {"id": "skill2", "stock": 20, "price": 2},
+          {"id": "rock2", "stock": 8, "price": 2},
+          {"id": "ester2", "stock": 8, "price": 3},
+          {"id": "ketone2", "stock": 8, "price": 3},
+          {"id": "med1", "stock": 5, "price": 6}
+        ],
+      "san": [
+        {"id": "sanity", "value": 2340, "not": "Natural\n Gain Sanity"},
+        {"id": "missions", "value": 1790, "not": "Missions"},
+        {"id": "sanity120", "value": 240, "not": "Weekly \nBooster"},
+        {"id": "firstclear", "value": 1300, "not": "First-time \nClear"},
+        {"id": "exstage", "value": -380, "not": "EX and S stages"},
+        {"id": "annihilation", "value": -250, "not": "Annihilation"}
+      ]
     }
   ]
 }
