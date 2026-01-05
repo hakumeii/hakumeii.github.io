@@ -135,7 +135,7 @@
       "uid": "event4",
       "title": "Adventure Cannot Wait For The Sun Rerun",
       "rewards": [
-        {"id":"op","total":29},
+        {"id":"op","total":38},
         {"id":"welfare","name": "Papyrus","url":"zz_papyrus.png"},
         {"id":"purplecert", "total": 1840}
       ],
