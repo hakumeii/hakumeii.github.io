@@ -173,6 +173,60 @@
         {"id": "exstage", "value": -380, "not": "EX and S stages"},
         {"id": "annihilation", "value": -250, "not": "Annihilation"}
       ]
+    },
+    {
+      "uid": "event5",
+      "title": "Ato",
+      "rewards": [
+        {"id":"op","total":40},
+        {"id":"welfare","name": "Matsukiri", "url":"zz_matsu.png"}
+      ],
+      "farm": [
+        {"id":"rock3","stage":"AT-6"},
+        {"id":"ketone3","stage":"AT-7"},
+        {"id":"nodule3", "stage":"AT-8"}
+      ],
+      "items": [
+        {"id":"outfit","stock":1,"price":500,"suffix":" Astesia", "url": "zz_astesia2.png"},
+        {"id":"outfit","stock":1,"price":500,"suffix":" Melantha", "url": "zz_melantha2.png"},
+        {"id":"token5","stock":1,"price":1400, "suffix": "(5 All)"},
+        {"id":"tkt_gacha","stock":3,"price":150},
+        {"id":"modblock","stock":3,"price":75},
+        {"id":"crystal5","stock":5,"price":100},
+        {"id":"furnitureset","stock":1,"price":265},
+        {"id":"iron4","stock":10,"price":40},
+        {"id":"grind2","stock":10,"price":35},
+        {"id":"refs","stock":10,"price":35},
+        {"id":"salt4","stock":10,"price":30},
+        {"id":"modinstrument","stock":10,"price":15},
+        {"id":"modstick","stock":60,"price":5},
+        {"id":"device3","stock":15,"price":15},
+        {"id":"rma7012","stock":15,"price":15},
+        {"id":"pgel3","stock":15,"price":12},
+        {"id":"fiber3","stock":15,"price":12},
+        {"id":"lmd","stock":120,"price":7,"suffix":"x5000"},
+        {"id":"goldexp","stock":30,"price":5,"suffix":"x2"},
+        {"id":"yellowexp","stock":50,"price":3,"suffix":"x2"},
+        {"id":"blueexp","stock":150,"price":1,"suffix":"x2"},
+        {"id":"skill3","stock":25,"price":4},
+        {"id":"skill2","stock":50,"price":2},
+        {"id":"rock2","stock":40,"price":2},
+        {"id":"sugar2","stock":30,"price":3},
+        {"id":"ester2","stock":30,"price":3},
+        {"id":"iron2","stock":25,"price":3},
+        {"id":"ketone2","stock":25,"price":3},
+        {"id":"device2","stock":20,"price":4},
+        {"id":"pio1","stock":5,"price":6},
+        {"id":"furniturepart","stock":200,"price":2,"suffix":"x20"}
+      ],
+      "san": [
+        {"id": "sanity", "value": 5040, "not": "Natural\n Gain Sanity"},
+        {"id": "missions", "value": 1640, "not": "Missions"},
+        {"id": "sanity120", "value": 720, "not": "Weekly \nBooster"},
+        {"id": "firstclear", "value": 1560, "not": "First-time \nClear"},
+        {"id": "exstage", "value": -380, "not": "EX stages"},
+        {"id": "annihilation", "value": -375, "not": "Annihilation"}
+      ]
     }
   ]
 }
