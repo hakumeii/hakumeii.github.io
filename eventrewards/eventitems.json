@@ -133,7 +133,7 @@
     },
     {
       "uid": "event4",
-      "title": "Adventure Cannot Wait For The Sun Rerun",
+      "title": "Pepe Rerun",
       "rewards": [
         {"id":"op","total":38},
         {"id":"welfare","name": "Papyrus","url":"zz_papyrus.png"},
@@ -226,6 +226,54 @@
         {"id": "firstclear", "value": 1560, "not": "First-time \nClear"},
         {"id": "exstage", "value": -380, "not": "EX stages"},
         {"id": "annihilation", "value": -375, "not": "Annihilation"}
+      ]
+    },
+    {
+      "uid": "event6",
+      "title": "Somniliquium Serenum",
+      "rewards": [
+        {"id":"op","total":26},
+        {"id":"welfare","name": "Yahata Umiri", "url":"zz_yahata.png"},
+        {"id":"welfare","name":"Yutenji Nyamu", "url":"zz_yutenji.png"}
+      ],
+      "farm": [
+        {"id":"ester3","stage":"SS-6"},
+        {"id":"salt3","stage":"SS-7"},
+        {"id":"fiber3", "stage":"SS-8"}
+      ],
+      "items": [
+        {"id":"token5","stock":1,"price":2800, "suffix": "(10 All)"},
+        {"id":"tkt_gacha","stock":3,"price":150},
+        {"id":"modblock","stock":2,"price":75},
+        {"id":"pprep","stock":5,"price":100},
+        {"id":"furnitureset","stock":1,"price":345},
+        {"id":"ketone4","stock":10,"price":35},
+        {"id":"crystal4","stock":10,"price":40},
+        {"id":"salt4","stock":10,"price":30},        
+        {"id":"modinstrument","stock":10,"price":15},
+        {"id":"modstick","stock":60,"price":5},
+        {"id":"rock3","stock":15,"price":7},
+        {"id":"iron3","stock":10,"price":10},
+        {"id":"lmd","stock":100,"price":7,"suffix":"x5000"},
+        {"id":"goldexp","stock":25,"price":5,"suffix":"x2"},
+        {"id":"yellowexp","stock":50,"price":3,"suffix":"x2"},
+        {"id":"blueexp","stock":120,"price":1,"suffix":"x2"},
+        {"id":"skill3","stock":25,"price":4},
+        {"id":"skill2","stock":50,"price":2},
+        {"id":"sugar2","stock":25,"price":3},
+        {"id":"iron2","stock":25,"price":3},
+        {"id":"device2","stock":25,"price":4},
+        {"id":"grd1","stock":5,"price":6},
+        {"id":"spc1","stock":5,"price":6},
+        {"id":"furniturepart","stock":200,"price":2,"suffix":"x20"}
+      ],
+      "san": [
+        {"id": "sanity", "value": 3300, "not": "Natural\n Gain Sanity"},
+        {"id": "missions", "value": 1530, "not": "Missions"},
+        {"id": "sanity120", "value": 480, "not": "Weekly \nBooster"},
+        {"id": "firstclear", "value": 980, "not": "First-time \nClear"},
+        {"id": "exstage", "value": -240, "not": "EX stages"},
+        {"id": "annihilation", "value": -250, "not": "Annihilation"}
       ]
     }
   ]
