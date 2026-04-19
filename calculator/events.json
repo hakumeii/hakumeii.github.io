@@ -1,12 +1,5 @@
 [
-  {
-    "name": "Exusiai Alter and Lemuen Event",
-    "rewards": [
-      { "label": "41 OP", "type": "checkbox", "value": 7380 },
-      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
-      { "label": "24 Limited HH Ticket", "type": "checkbox", "value": 14400 }
-    ]
-  },
+  
   {
     "name": "Act Or Die - Phantom Alter",
     "rewards": [
@@ -73,6 +66,93 @@
     "name": "Episode 16: Abnormal Spectrum - Mantra",
     "rewards": [
       { "label": "45 OP - including secret interlude, H stages and simulation", "type": "checkbox", "value": 8100 }
+    ]
+  },
+  {
+    "name": "SilverAsh and Pramanix Alter Event",
+    "rewards": [
+      { "label": "41 OP", "type": "checkbox", "value": 7380 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "24 Limited HH Ticket", "type": "checkbox", "value": 14400 }
+    ]
+  },
+  {
+    "name": "Lappland Alter Event Rerun",
+    "rewards": [
+      { "label": "41 OP", "type": "checkbox", "value": 7380 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9000 Orundum", "type": "radio", "value": 9000 }
+    ],
+    "notes": "1815 Purple Cert"
+  },
+  {
+    "name": "Unrealized Realities - Nasti",
+    "rewards": [
+      { "label": "28 OP", "type": "checkbox", "value": 5040 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 }
+    ]
+  },
+  {
+    "name": "Thorns Alter Event Rerun",
+    "rewards": [
+      { "label": "28 OP", "type": "checkbox", "value": 5040 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9300 Orundum", "type": "radio", "value": 9300 }
+    ],
+    "notes": "1860 Purple Cert"
+  },
+  {
+    "name": "Titi Event",
+    "rewards": [
+      { "label": "28 OP", "type": "checkbox", "value": 5040 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 }
+    ]
+  },
+  {
+    "name": "Yu Event Rerun",
+    "rewards": [
+      { "label": "38 OP", "type": "checkbox", "value": 6840 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9500 Orundum", "type": "radio", "value": 9500 }
+    ],
+    "notes": "1900 Purple Cert"
+  },
+  {
+    "name": "Wang and Chen Alter 2 Event",
+    "rewards": [
+      { "label": "39 OP", "type": "checkbox", "value": 7020 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "24 Limited HH Ticket", "type": "checkbox", "value": 14400 }
+    ]
+  },
+  {
+    "name": "Crossing - Bellone",
+    "rewards": [
+      { "label": "18 OP", "type": "checkbox", "value": 3240 }
+    ]
+  },
+  {
+    "name": "Necrass Event Rerun",
+    "rewards": [
+      { "label": "28 OP", "type": "checkbox", "value": 5040 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 },
+      { "label": "0 Orundum", "type": "radio", "value": 0, "checked": true },
+      { "label": "2000 Orundum", "type": "radio", "value": 2000 },
+      { "label": "9000 Orundum", "type": "radio", "value": 9000 }
+    ],
+    "notes": "1815 Purple Cert"
+  },
+  {
+    "name": "Zima Alter Event",
+    "rewards": [
+      { "label": "27 OP", "type": "checkbox", "value": 4860 },
+      { "label": "3 HH Ticket", "type": "checkbox", "value": 1800 }
     ]
   }
 ]
